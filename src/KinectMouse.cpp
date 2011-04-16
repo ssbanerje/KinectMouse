@@ -144,16 +144,14 @@ void KinectMouse::update() {
     
     if (detectingHands && detectHands==1) {
 		for (int i = 0; i < contourFinder.nBlobs; i++) {
-			int centerX = contourFinder.blobs[i].centroid.x;
-			int centerY = contourFinder.blobs[i].centroid.y;
+			float x = (float)contourFinder.blobs[i].centroid.x;
+			float y = (float)contourFinder.blobs[i].centroid.y;
             
-			float x = centerX;
-			float y = centerY;
 			int cornerCount = contourFinder.blobs[i].nPts;
 			float centroidX = 0;
 			float centroidY = 0;
 			float addCount = 0;
-			for (int j=0; j<contourFinder.blobs[i].nPts; j+=5){
+			for (int j=0; j<contourFinder.blobs[i].nPts; j+=5) {
 				addCount++;
 				centroidX += contourFinder.blobs[i].pts[j].x;
 				centroidY += contourFinder.blobs[i].pts[j].y;
