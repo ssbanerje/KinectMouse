@@ -22,6 +22,7 @@ public:
     void unregister(); //This Hand object no longer controls mouse
     ofPoint getPos();
     bool getIsPrimary();
+    void setIsActive(bool active);
     bool dead;
     
 private:

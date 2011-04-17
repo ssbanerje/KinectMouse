@@ -3,7 +3,6 @@
 int mouseDownCount = 0;
 
 //--------------------------------------------------------------
-
 Hand::Hand(bool isPrimary, int dispWidth, int dispHeight) {	
 	this.isPrimary = isPrimary;
 	isActive = false;
@@ -24,6 +23,11 @@ Hand::Hand(bool isPrimary, int dispWidth, int dispHeight) {
 
 //--------------------------------------------------------------
 Hand::~Hand() {}
+
+//--------------------------------------------------------------
+void Hand::setIsActive(bool active) {
+    isActive = active;
+}
 
 //--------------------------------------------------------------
 void Hand::update(ofPoint pos, int cornerCount, ofPoint currentCentroid) {

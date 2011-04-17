@@ -33,8 +33,6 @@
 		E4C242CD10CC650E004149E2 /* libfmodex.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = E4C242CC10CC650E004149E2 /* libfmodex.dylib */; };
 		E4C246DA10CCAE22004149E2 /* freeimage.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E4C246D910CCAE22004149E2 /* freeimage.a */; };
 		F77025E21359BDD9005BD877 /* Hand.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F77025E01359BDD9005BD877 /* Hand.cpp */; };
-		F7702616135AC26C005BD877 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F770260D135AC26C005BD877 /* main.cpp */; };
-		F7702617135AC26C005BD877 /* testApp.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F770260F135AC26C005BD877 /* testApp.cpp */; };
 		F7702618135AC26C005BD877 /* ofxMSAInteractiveObject.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F7702614135AC26C005BD877 /* ofxMSAInteractiveObject.cpp */; };
 		F7702623135AC278005BD877 /* tinyxml.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F770261C135AC278005BD877 /* tinyxml.cpp */; };
 		F7702624135AC278005BD877 /* tinyxmlerror.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F770261E135AC278005BD877 /* tinyxmlerror.cpp */; };
@@ -148,16 +146,8 @@
 		E4C246D910CCAE22004149E2 /* freeimage.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = freeimage.a; path = ../../../libs/FreeImage/lib/osx/freeimage.a; sourceTree = SOURCE_ROOT; };
 		F77025E01359BDD9005BD877 /* Hand.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Hand.cpp; sourceTree = "<group>"; };
 		F77025E11359BDD9005BD877 /* Hand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Hand.h; sourceTree = "<group>"; };
-		F7702608135AC26C005BD877 /* changelog.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = changelog.txt; sourceTree = "<group>"; };
-		F770260D135AC26C005BD877 /* main.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
-		F770260E135AC26C005BD877 /* MyTestObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyTestObject.h; sourceTree = "<group>"; };
-		F770260F135AC26C005BD877 /* testApp.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = testApp.cpp; sourceTree = "<group>"; };
-		F7702610135AC26C005BD877 /* testApp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = testApp.h; sourceTree = "<group>"; };
-		F7702611135AC26C005BD877 /* install.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = install.xml; sourceTree = "<group>"; };
-		F7702612135AC26C005BD877 /* LICENSE.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE.txt; sourceTree = "<group>"; };
 		F7702614135AC26C005BD877 /* ofxMSAInteractiveObject.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxMSAInteractiveObject.cpp; sourceTree = "<group>"; };
 		F7702615135AC26C005BD877 /* ofxMSAInteractiveObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxMSAInteractiveObject.h; sourceTree = "<group>"; };
-		F770261A135AC278005BD877 /* install.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = install.xml; sourceTree = "<group>"; };
 		F770261C135AC278005BD877 /* tinyxml.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = tinyxml.cpp; sourceTree = "<group>"; };
 		F770261D135AC278005BD877 /* tinyxml.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = tinyxml.h; sourceTree = "<group>"; };
 		F770261E135AC278005BD877 /* tinyxmlerror.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = tinyxmlerror.cpp; sourceTree = "<group>"; };
@@ -607,49 +597,10 @@
 		F7702607135AC26C005BD877 /* ofxMSAInteractiveObject */ = {
 			isa = PBXGroup;
 			children = (
-				F7702608135AC26C005BD877 /* changelog.txt */,
-				F7702609135AC26C005BD877 /* examples */,
-				F7702611135AC26C005BD877 /* install.xml */,
-				F7702612135AC26C005BD877 /* LICENSE.txt */,
 				F7702613135AC26C005BD877 /* src */,
 			);
 			name = ofxMSAInteractiveObject;
 			path = ../../../addons/ofxMSAInteractiveObject;
-			sourceTree = "<group>";
-		};
-		F7702609135AC26C005BD877 /* examples */ = {
-			isa = PBXGroup;
-			children = (
-				F770260A135AC26C005BD877 /* openFrameworks */,
-			);
-			path = examples;
-			sourceTree = "<group>";
-		};
-		F770260A135AC26C005BD877 /* openFrameworks */ = {
-			isa = PBXGroup;
-			children = (
-				F770260B135AC26C005BD877 /* ofxMSAInteractiveObject example */,
-			);
-			path = openFrameworks;
-			sourceTree = "<group>";
-		};
-		F770260B135AC26C005BD877 /* ofxMSAInteractiveObject example */ = {
-			isa = PBXGroup;
-			children = (
-				F770260C135AC26C005BD877 /* src */,
-			);
-			path = "ofxMSAInteractiveObject example";
-			sourceTree = "<group>";
-		};
-		F770260C135AC26C005BD877 /* src */ = {
-			isa = PBXGroup;
-			children = (
-				F770260D135AC26C005BD877 /* main.cpp */,
-				F770260E135AC26C005BD877 /* MyTestObject.h */,
-				F770260F135AC26C005BD877 /* testApp.cpp */,
-				F7702610135AC26C005BD877 /* testApp.h */,
-			);
-			path = src;
 			sourceTree = "<group>";
 		};
 		F7702613135AC26C005BD877 /* src */ = {
@@ -664,7 +615,6 @@
 		F7702619135AC278005BD877 /* ofxXmlSettings */ = {
 			isa = PBXGroup;
 			children = (
-				F770261A135AC278005BD877 /* install.xml */,
 				F770261B135AC278005BD877 /* libs */,
 				F7702620135AC278005BD877 /* src */,
 			);
@@ -1095,8 +1045,6 @@
 				F7D4ECAF13599B0E0095562C /* ofxCvShortImage.cpp in Sources */,
 				F7D4ECE81359A73B0095562C /* KinectMouse.cpp in Sources */,
 				F77025E21359BDD9005BD877 /* Hand.cpp in Sources */,
-				F7702616135AC26C005BD877 /* main.cpp in Sources */,
-				F7702617135AC26C005BD877 /* testApp.cpp in Sources */,
 				F7702618135AC26C005BD877 /* ofxMSAInteractiveObject.cpp in Sources */,
 				F7702623135AC278005BD877 /* tinyxml.cpp in Sources */,
 				F7702624135AC278005BD877 /* tinyxmlerror.cpp in Sources */,

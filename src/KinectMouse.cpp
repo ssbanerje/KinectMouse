@@ -39,7 +39,7 @@ void KinectMouse::setup() {
     //Setup detection
     nearThreshold = 5;
     farThreshold = 30;
-    Count = 0;
+    detectCount = 0;
     twoHandsCount = 0;
     
     //Setup GUI
@@ -101,7 +101,7 @@ void KinectMouse::update() {
     int detectHands = contourFinder.blobs.size();
     
     if (detectHands == 2) {
-        twoHandsCount = min(60, ++detectTwoHandsCount);
+        twoHandsCount = min(60, ++twoHandsCount);
     } else {
         twoHandsCount = max(0, --twoHandsCount);
     }
@@ -117,7 +117,7 @@ void KinectMouse::update() {
 		if (detectCount < 10) {
 			detectingHands = false;
 			for (int j=0; j<hands.size(); j++){
-				hands[j]->unRegister();
+				hands[j]->unregister();
 			}
 			soundRelease.play();
 		}
@@ -129,11 +129,11 @@ void KinectMouse::update() {
 	}
     
     if (detectingTwoHands) {
-		if (detectTwoHandsCount < 15) {
+		if (twoHandsCount < 15) {
 			detectingTwoHands = false;
 		}
 	} else {
-		if (detectTwoHandsCount > 30) {
+		if (twoHandsCount > 30) {
 			detectingTwoHands = true;
 			CGEventRef keyEv = CGEventCreateKeyboardEvent(NULL, (CGKeyCode)101, true);
 			CGEventPost (kCGHIDEventTap, keyEv);
@@ -159,7 +159,7 @@ void KinectMouse::update() {
 			centroidX = centroidX/addCount;
 			centroidY = centroidY/addCount;
 			if (hands.size() == 0) {
-				Hand *hand = new Hand(true, displayWidth, displayHeight);
+				Hand *hand = new Hand(true, dispWidth, dispHeight);
 				hand->setIsActive(true);
 				hand->update(ofPoint(x, y), cornerCount, ofPoint(x, y));
 				hands.push_back(hand);
@@ -175,7 +175,7 @@ void KinectMouse::update() {
 
 //--------------------------------------------------------------
 void KinectMouse::draw(){
-    ofSetColor(255, 255, 255)
+    ofSetColor(255, 255, 255);
     
     //Draw initial menu with settings
     if(showUI){
@@ -216,7 +216,7 @@ void KinectMouse::draw(){
 
 //--------------------------------------------------------------
 void KinectMouse::exit() {
-    kinect.setsetCameraTiltAngle(0);
+    kinect.setCameraTiltAngle(0);
 	kinect.close();
     ofLog(OF_LOG_NOTICE, "KinectMouse::exit()");
 }
@@ -248,11 +248,11 @@ void KinectMouse::keyPressed(int key){
         case 'r':
 			kinect.close();
 			kinect.open();
-			kinect.setCameraTiltAngle(angle);
+			kinect.setCameraTiltAngle(kinectAngle);
             break;
 		case ' ':
-			showConfigUI = !showConfigUI;
-			if (showConfigUI) {
+			showUI = !showUI;
+			if (showUI) {
 				ofSetWindowShape(800, 600);
 			} else {
 				ofSetWindowShape(400, 300);
@@ -260,13 +260,13 @@ void KinectMouse::keyPressed(int key){
 			}
 			break;			
 		case OF_KEY_UP:
-			angle++;
-			if(angle>30) angle=30;
+			kinectAngle++;
+			if(kinectAngle>30) kinectAngle=30;
 			kinect.setCameraTiltAngle(kinectAngle);
 			break;
 		case OF_KEY_DOWN:
-			angle--;
-			if(angle<-30) angle=-30;
+			kinectAngle--;
+			if(kinectAngle<-30) kinectAngle=-30;
 			kinect.setCameraTiltAngle(kinectAngle);
 			break;
 	}
@@ -306,7 +306,7 @@ void KinectMouse::checkDepthUpdate(){
 					ofLog(OF_LOG_ERROR, "Reset Kinect");
 					kinect.close();
 					kinect.open();
-					kinect.setCameraTiltAngle(angle);
+					kinect.setCameraTiltAngle(kinectAngle);
 					break;
 				}
 			}                  

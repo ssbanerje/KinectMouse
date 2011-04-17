@@ -55,7 +55,7 @@ private:
     int detectCount;
     int twoHandsCount;
     bool detectingHands;
-    bool twoHandsDetected;
+    bool detectingTwoHands;
     ofxCvContourFinder contourFinder;
     vector<Hand *> hands;    
 };
