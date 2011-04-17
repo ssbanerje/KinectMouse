@@ -113,6 +113,56 @@ bool Hand::checkMoveSpeed() {
 }
 
 //--------------------------------------------------------------
+bool Hand::checkClick(int cornerCount) {
+    cornerCountHistory.pushBack(cornerCount);
+    if (cornerCountHistory.size() > 6) {
+		cornerCountHistory.erase(cornerCountHistory.begin());
+	} else {
+		return false;
+	}
+    int oldCornerNums = 0;
+	int cornerNums = 0;
+	for (int i=0; i<cornerCountHistory.size(); i++) {
+		if (i < 4) {
+			oldCornerNums += cornerCountHistory[i];
+		} else {
+			cornerNums += cornerCountHistory[i];
+		}
+	}
+	oldCornerNums = oldCornerNums/4;
+	cornerNums = cornerNums/2;
+    if (handMode == HAND_MODE_NORMAL && cornerNums + 150 < oldCornerNums) {
+		currentCornerNums = cornerNums;
+		handMode = HAND_MODE_CLICK;
+		mouseDownCount = 0;
+		return true;
+	}
+	if (cornerNums > currentCornerNums + 150) {
+		if (handMode == HAND_MODE_DRAG) {
+			MouseUp();
+			soundClick.play();
+			handMode = HAND_MODE_NORMAL;
+			return true;
+		} else if (handMode == HAND_MODE_CLICK) {
+			MouseClick();
+			soundClick.play();
+			handMode = HAND_MODE_NORMAL;
+			return true;
+		}
+	}
+	if (handMode == HAND_MODE_CLICK) {
+		mouseDownCount++;
+		if (mouseDownCount > MOUSE_CLICK_FRAME) {
+			handMode = HAND_MODE_DRAG;
+			MouseDown();
+			soundClick.play();
+			mouseDownCount = 0;
+		}
+	}
+	return false;
+}
+
+//--------------------------------------------------------------
 CGPoint Hand::calcCurrentPosition() {
     float x = currentPos.x;
     float y = currentPos.y;
@@ -125,10 +175,8 @@ CGPoint Hand::calcCurrentPosition() {
 	CGPoint pt;
 	pt.x = x/100*displayWidth;
 	pt.y = y/100*displayHeight;
-	
 	return pt;
 }
-
 
 //--------------------------------------------------------------
 void Hand::unregister() {
@@ -137,6 +185,47 @@ void Hand::unregister() {
 	}
 	isActive = false;
 	handMode = HAND_MODE_NORMAL;
+}
+
+//--------------------------------------------------------------
+ofPoint Hand::getCurrentPos(ofPoint newPos) {
+	if (posHistory.size() == 0) {
+		return newPos;
+	}
+	float x = newPos.x;
+	float y = newPos.y;
+	for (int j = 0; j < posHistory.size(); j++) {
+		x += posHistory.at(j).x;
+		y += posHistory.at(j).y;
+	}
+	x = x/(posHistory.size()+1);
+	y = y/(posHistory.size()+1);
+	return ofPoint(x, y);	
+}
+
+//--------------------------------------------------------------
+void Hand::setPos(ofPoint pos) {
+	currentPos = pos;
+	
+	posHistory.push_back(pos);
+	if (posHistory.size() > POSITION_HISTORY_SIZE) {
+		posHistory.erase(posHistory.begin());
+	}	
+}
+
+//--------------------------------------------------------------
+void Hand::setIsActive(bool active) {
+	isActive = active;
+}
+
+//--------------------------------------------------------------
+ofPoint Hand::getPos() {
+	return currentPos;
+}
+
+//--------------------------------------------------------------
+bool Hand::getIsPrimary() {
+	return isPrimary;
 }
 
 //--------------------------------------------------------------
@@ -168,7 +257,7 @@ void Hand::MouseDrag() {
 }
 
 //--------------------------------------------------------------
-void Hand::fireMouseClick() {
+void Hand::MouseClick() {
 	fireMouseDown();
 	fireMouseUp();
 }

@@ -17,8 +17,7 @@ public:
     ~Hand();
     
     void update(ofPoint currentPoint, int cornerCount, ofPoint currentCentroid); //Update current mouse status
-    void setCentroid(ofPoint centroid);
-    ofPoint getCurrentPos(ofPoint currentPoint);
+    ofPoint getCurrentPos(ofPoint currentPoint); //Get mean of positions on history vector
     void setPos(ofPoint currentPoint); //Set position for mouse
     void unregister(); //This Hand object no longer controls mouse
     ofPoint getPos();
