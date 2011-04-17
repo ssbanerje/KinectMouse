@@ -13,7 +13,7 @@ void KinectMouse::setup() {
     dispWidth = 1680;
     dispHeight = 1050;
     ofSetFrameRate(30);
-    ofBackground(0, 0, 0);
+    ofBackground(50, 50, 50);
     ofSetWindowShape(800, 600);
     ofSetWindowTitle("Kinect Mouse");
     dispFont.loadFont("Courier New.ttf",14,true,true);
@@ -68,6 +68,7 @@ void KinectMouse::update() {
     grayImage.setFromPixels(kinect.getDepthPixels(), kinect.width, kinect.height);
 	grayThreshImg.setFromPixels(kinect.getDepthPixels(), kinect.width, kinect.height);
    	grayThreshImg.setFromPixels(kinect.getPixels(), kinect.width, kinect.height);
+    colorImage.setFromPixels(kinect.getPixels(),kinect.width,kinect.height);
     if(mirror) {
         grayImage.mirror(false,true);
     }
@@ -178,13 +179,14 @@ void KinectMouse::draw(){
     
     //Draw initial menu with settings
     if(showUI){
-        kinect.drawDepth(300, 0, 400, 300);
+        kinect.drawDepth(275, 100, 200, 150);
+        colorImage.draw(500, 100, 200, 150);
 		gui.draw();
         dispFont.drawString("Press Space Key to start.", 20, ofGetHeight()-60);
 		ofPushMatrix();
 		ofTranslate(400, 300, 0);
 		glScalef(0.6, 0.6, 1.0f); 
-        for (int i = 0; i < contourFinder.nBlobs; i++){
+        for (register int i = 0; i < contourFinder.nBlobs; i++){
             ofPushMatrix();
             contourFinder.blobs[i].draw(0,0);
 			ofSetColor(255, 0, 0);
@@ -200,6 +202,8 @@ void KinectMouse::draw(){
 			}
 			centroidX = centroidX/addCount;
 			centroidY = centroidY/addCount;
+            ofSetColor(0, 0, 255);
+            ofFill();
 			ofCircle(centroidX, centroidY, 10);
 		    ofPopMatrix();
         }
@@ -207,7 +211,37 @@ void KinectMouse::draw(){
 	}
     //Draw grayImage when the KinectMouse is in use
     else{
-		grayImage.draw(0, 0, 400, 300);
+        grayImage.draw(0, 0, 400, 300);
+		colorImage.draw(400, 0, 400, 300);
+        stringstream str;
+        str<<"Frame rate - "<<ofGetFrameRate()<<endl
+           <<"Press Space Key to end.";
+        dispFont.drawString(str.str(), 20, ofGetHeight()-60);
+        ofPushMatrix();
+		ofTranslate(200, 300, 0);
+		glScalef(0.5, 0.5, 1.0f); 
+        for (register int i = 0; i < contourFinder.nBlobs; i++){
+            ofPushMatrix();
+            contourFinder.blobs[i].draw(0,0);
+			ofSetColor(255, 0, 0);
+            ofFill();
+            ofEllipse(contourFinder.blobs[i].centroid.x, contourFinder.blobs[i].centroid.y, 4, 4);
+			float centroidX = 0;
+			float centroidY = 0;
+			float addCount = 0;
+			for (int j = 0; j < contourFinder.blobs[i].nPts; j+=5){
+				addCount++;
+				centroidX += contourFinder.blobs[i].pts[j].x;
+				centroidY += contourFinder.blobs[i].pts[j].y;
+			}
+			centroidX = centroidX/addCount;
+			centroidY = centroidY/addCount;
+            ofSetColor(0, 0, 255);
+            ofFill();
+			ofCircle(centroidX, centroidY, 10);
+		    ofPopMatrix();
+        }
+        ofPopMatrix();
 	}
 	ofSetColor(255, 255, 255);
     ofNoFill();
@@ -254,7 +288,7 @@ void KinectMouse::keyPressed(int key){
 			if (showUI) {
 				ofSetWindowShape(800, 600);
 			} else {
-				ofSetWindowShape(400, 300);
+				ofSetWindowShape(800, 600);
 				kinect.setCameraTiltAngle(kinectAngle);
 			}
 			break;			
