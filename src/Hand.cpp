@@ -3,11 +3,11 @@
 int mouseDownCount = 0;
 
 //--------------------------------------------------------------
-Hand::Hand(bool isPrimary, int dispWidth, int dispHeight) {	
-	this.isPrimary = isPrimary;
+Hand::Hand(bool primary, int displayWidth, int displayHeight) {	
+	isPrimary = primary;
 	isActive = false;
-	this.dispHeight = dispHeight;
-	this.dispWidth = dispWidth;
+	dispHeight = displayHeight;
+	dispWidth = displayWidth;
 	mouseDownCount = 0;
 	gestureCount = 0;
 	toNormalModeCount = 0;
@@ -44,12 +44,12 @@ void Hand::update(ofPoint pos, int cornerCount, ofPoint currentCentroid) {
         if (!checkClick(cornerCount)) {
             setPos(currentTmpPos);
             MouseMove();
-            checkSpeedMove();
+            checkMoveSpeed();
         }
     } else if (handMode == HAND_MODE_MOVE) {
         setPos(currentTmpPos);
         MouseMove();
-        checkSpeedMove();
+        checkMoveSpeed();
     } else if (handMode == HAND_MODE_DRAG) {
         if (!checkClick(cornerCount)) {
             setPos(currentTmpPos);
@@ -117,7 +117,7 @@ bool Hand::checkMoveSpeed() {
 
 //--------------------------------------------------------------
 bool Hand::checkClick(int cornerCount) {
-    cornerCountHistory.pushBack(cornerCount);
+    cornerCountHistory.push_back(cornerCount);
     if (cornerCountHistory.size() > 6) {
         cornerCountHistory.erase(cornerCountHistory.begin());
     } else {
@@ -135,12 +135,12 @@ bool Hand::checkClick(int cornerCount) {
     oldCornerNums = oldCornerNums/4;
     cornerNums = cornerNums/2;
     if (handMode == HAND_MODE_NORMAL && cornerNums + 150 < oldCornerNums) {
-        currentCornerNums = cornerNums;
+        currentCornerNo = cornerNums;
         handMode = HAND_MODE_CLICK;
         mouseDownCount = 0;
         return true;
     }
-    if (cornerNums > currentCornerNums + 150) {
+    if (cornerNums > currentCornerNo + 150) {
         if (handMode == HAND_MODE_DRAG) {
             MouseUp();
             soundClick.play();
@@ -166,7 +166,7 @@ bool Hand::checkClick(int cornerCount) {
 }
 
 //--------------------------------------------------------------
-CGPoint Hand::calcCurrentPosition() {
+CGPoint Hand::calcMousePosition() {
     float x = currentPos.x;
     float y = currentPos.y;
     
@@ -177,8 +177,8 @@ CGPoint Hand::calcCurrentPosition() {
 	
 
     CGPoint pt;
-    pt.x = x/100*displayWidth;
-    pt.y = y/100*displayHeight;
+    pt.x = x/100*dispWidth;
+    pt.y = y/100*dispHeight;
     return pt;
 }
 
@@ -214,11 +214,6 @@ void Hand::setPos(ofPoint pos) {
     if (posHistory.size() > POSITION_HISTORY_SIZE) {
         posHistory.erase(posHistory.begin());
     }	
-}
-
-//--------------------------------------------------------------
-void Hand::setIsActive(bool active) {
-    isActive = active;
 }
 
 //--------------------------------------------------------------
@@ -261,6 +256,6 @@ void Hand::MouseDrag() {
 
 //--------------------------------------------------------------
 void Hand::MouseClick() {
-    fireMouseDown();
-    fireMouseUp();
+    MouseDown();
+    MouseUp();
 }

@@ -53,7 +53,7 @@ private:
     int currentCornerNo;
     vector<int> cornerCountHistory;
     bool checkClick(int cornerCount); //Check if click has happened
-    bool checkSpeedMove(); //Check and interpret move speed for movement
+    bool checkMoveSpeed(); //Check and interpret move speed for movement
     
     //Referecences
     Hand *primaryHand;
