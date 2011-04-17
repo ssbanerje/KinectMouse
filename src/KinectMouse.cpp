@@ -38,25 +38,25 @@ void KinectMouse::setup() {
     
     //Setup detection
     nearThreshold = 5;
-	farThreshold = 30;
-	detectCount = 0;
-	twoHandsCount = 0;
+    farThreshold = 30;
+    Count = 0;
+    twoHandsCount = 0;
     
     //Setup GUI
     gui.setup();
-	gui.config->gridSize.x = 300;
-	gui.addTitle("KINECT SETTINGS");
-	gui.addSlider("Tilt Angle", kinectAngle, -30, 30);
-	gui.addToggle("Mirror Mode", mirror);
-	gui.addTitle("DETECT RANGE");
-	gui.addSlider("Near Distance", nearThreshold, 5, 20);
-	gui.addSlider("Far Distance", farThreshold, 20, 60);
-	gui.addTitle("MOUSE CONTROL");
-	gui.addSlider("Display Width", dispWidth, 600, 1980);
-	gui.addSlider("Display Height", dispHeight, 600, 1980);
-	gui.setDefaultKeys(true);
-	gui.loadFromXML();
-	gui.show();
+    gui.config->gridSize.x = 300;
+    gui.addTitle("KINECT SETTINGS");
+    gui.addSlider("Tilt Angle", kinectAngle, -30, 30);
+    gui.addToggle("Mirror Mode", mirror);
+    gui.addTitle("DETECT RANGE");
+    gui.addSlider("Near Distance", nearThreshold, 5, 20);
+    gui.addSlider("Far Distance", farThreshold, 20, 60);
+    gui.addTitle("MOUSE CONTROL");
+    gui.addSlider("Display Width", dispWidth, 600, 1980);
+    gui.addSlider("Display Height", dispHeight, 600, 1980);
+    gui.setDefaultKeys(true);
+    gui.loadFromXML();
+    gui.show();
 }
 
 //--------------------------------------------------------------
