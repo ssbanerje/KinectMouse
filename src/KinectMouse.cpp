@@ -9,7 +9,7 @@ void KinectMouse::setup() {
     //Setup Application
     debug = true;
     showUI = true;
-    mirror = true;
+    mirror = false;
     dispWidth = 1680;
     dispHeight = 1050;
     ofSetFrameRate(30);
