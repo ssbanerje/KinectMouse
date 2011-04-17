@@ -1076,6 +1076,7 @@
 					../../../libs/poco/include,
 					"../../../addons/**",
 				);
+				MACH_O_TYPE = mh_execute;
 				OTHER_CPLUSPLUSFLAGS = (
 					"-D__MACOSX_CORE__",
 					"-lpthread",
@@ -1117,6 +1118,7 @@
 					../../../libs/poco/include,
 					"../../../addons/**",
 				);
+				MACH_O_TYPE = mh_execute;
 				OTHER_CPLUSPLUSFLAGS = (
 					"-D__MACOSX_CORE__",
 					"-lpthread",
