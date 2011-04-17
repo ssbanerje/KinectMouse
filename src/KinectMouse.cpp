@@ -113,7 +113,6 @@ void KinectMouse::update() {
 	}
     
     if (detectingHands) {
-		ofLog(OF_LOG_VERBOSE, "Detecting single hand");
 		if (detectCount < 10) {
 			detectingHands = false;
 			for (int j=0; j<hands.size(); j++){
