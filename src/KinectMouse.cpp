@@ -44,16 +44,16 @@ void KinectMouse::setup() {
     
     //Setup GUI
     gui.setup();
-    gui.config->gridSize.x = 300;
-    gui.addTitle("KINECT SETTINGS");
-    gui.addSlider("Tilt Angle", kinectAngle, -30, 30);
-    gui.addToggle("Mirror Mode", mirror);
-    gui.addTitle("DETECT RANGE");
-    gui.addSlider("Near Distance", nearThreshold, 5, 20);
-    gui.addSlider("Far Distance", farThreshold, 20, 60);
-    gui.addTitle("MOUSE CONTROL");
+    gui.config->gridSize.x = 200;
+    gui.addTitle("Screen Dimensions");
     gui.addSlider("Display Width", dispWidth, 600, 1980);
     gui.addSlider("Display Height", dispHeight, 600, 1980);
+    gui.addTitle("Kinect Settings");
+    gui.addSlider("Tilt Angle", kinectAngle, -30, 30);
+    gui.addToggle("Mirror", mirror);
+    gui.addTitle("Depth Threshold");
+    gui.addSlider("Near Distance", nearThreshold, 5, 20);
+    gui.addSlider("Far Distance", farThreshold, 20, 60);
     gui.setDefaultKeys(true);
     gui.loadFromXML();
     gui.show();
@@ -178,7 +178,7 @@ void KinectMouse::draw(){
     
     //Draw initial menu with settings
     if(showUI){
-        kinect.drawDepth(400, 0, 400, 300);
+        kinect.drawDepth(300, 0, 400, 300);
 		gui.draw();
         dispFont.drawString("Press Space Key to start.", 20, ofGetHeight()-60);
 		ofPushMatrix();
