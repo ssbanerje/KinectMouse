@@ -62,6 +62,7 @@ void KinectMouse::setup() {
 //--------------------------------------------------------------
 void KinectMouse::update() {
     kinect.update();
+    kinect.setCameraTiltAngle(kinectAngle);
     checkDepthUpdate();
     
     //Update Images
