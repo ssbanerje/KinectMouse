@@ -5,3 +5,5 @@ ofxOpenCv, ofxThread, ofxVectorMath, ofxXmlSettings, ofxMSAInteractiveObject, of
 
 To run the application -- 
 Copy the files into the $ofx/apps/myApps/KinectMouse folder and compile and run the application using XCode
+
+This was built against openFrameworks v0.062
