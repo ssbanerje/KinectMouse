@@ -14,9 +14,14 @@ void KinectMouse::setup() {
     nearThreshold = 5;
     farThreshold = 30;
     mirror = false;
-    
     dispWidth = 1680;
     dispHeight = 1050;
+    depthImage.allocate(kinect.width, kinect.height);
+    colorImage.allocate(kinect.width, kinect.height);
+    
+    //Initialize OpenCL
+    opencl.setup(CL_DEVICE_TYPE_GPU, 2);
+    imgOps.setOpenCLContextAndInitializeKernels(&opencl);
     
     //Setup GUI
     showUI = true;
@@ -90,12 +95,10 @@ void KinectMouse::keyPressed(int key){
             break;
 		case ' ':
 			showUI = !showUI;
-			if (showUI) {
+			if (showUI)
 				ofSetWindowShape(800, 600);
-			} else {
-				ofSetWindowShape(800, 600);
-				kinect.setCameraTiltAngle(kinectAngle);
-			}
+			else
+				ofSetWindowShape(400, 300);
 			break;			
 		case OF_KEY_UP:
 			kinectAngle++;

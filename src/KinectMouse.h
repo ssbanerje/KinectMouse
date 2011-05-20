@@ -1,12 +1,14 @@
 #pragma once
 
 #include "ofMain.h"
-#include "ofxOpenCv.h"
 #include "ofxKinect.h"
+#include "ofxOpenCv.h"
 #include "ofxSimpleGuiToo.h"
+#include "MSAOpenCL.h"
+#include "ImageOperations.h"
 
 using namespace std;
-//using namespace MSA;
+using namespace MSA;
 
 class KinectMouse : public ofBaseApp{    
 public:
@@ -24,15 +26,19 @@ public:
 
 private:
     //Kinect
-    ofxKinect kinect;
-    int kinectAngle;
-    int nearThreshold;
-    int farThreshold;
+    ofxKinect           kinect;
+    int                 kinectAngle;
+    int                 nearThreshold;
+    int                 farThreshold;
+    ofxCvGrayscaleImage depthImage;
+    ofxCvColorImage     colorImage;
+    OpenCL              opencl;
     
     //Application
-    bool mirror;
-    bool showUI;
-    int dispWidth;
-    int dispHeight;
-    ofTrueTypeFont dispFont;
+    bool                mirror;
+    bool                showUI;
+    int                 dispWidth;
+    int                 dispHeight;
+    ImageOperations     imgOps;
+    ofTrueTypeFont      dispFont;
 };
