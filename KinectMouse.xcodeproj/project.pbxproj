@@ -48,6 +48,8 @@
 		F7A3D365138646290059D237 /* MSAOpenCLMemoryObject.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F7A3D353138646290059D237 /* MSAOpenCLMemoryObject.cpp */; };
 		F7A3D366138646290059D237 /* MSAOpenCLProgram.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F7A3D355138646290059D237 /* MSAOpenCLProgram.cpp */; };
 		F7A3D37313864B4E0059D237 /* OpenCL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F7A3D37213864B4E0059D237 /* OpenCL.framework */; };
+		F7A3D37513866AD30059D237 /* ImageOperations.cl in Sources */ = {isa = PBXBuildFile; fileRef = F7A3D37413866AD30059D237 /* ImageOperations.cl */; };
+		F7A3D37613866ADE0059D237 /* ImageOperations.cl in CopyFiles */ = {isa = PBXBuildFile; fileRef = F7A3D37413866AD30059D237 /* ImageOperations.cl */; };
 		F7D15D7E1386397400B342F8 /* Courier New.ttf in CopyFiles */ = {isa = PBXBuildFile; fileRef = F7D15D791386395200B342F8 /* Courier New.ttf */; };
 		F7D4EBF613599A850095562C /* cameras.c in Sources */ = {isa = PBXBuildFile; fileRef = F7D4EBCF13599A850095562C /* cameras.c */; };
 		F7D4EBF713599A850095562C /* core.c in Sources */ = {isa = PBXBuildFile; fileRef = F7D4EBD013599A850095562C /* core.c */; };
@@ -114,6 +116,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 7;
 			files = (
+				F7A3D37613866ADE0059D237 /* ImageOperations.cl in CopyFiles */,
 				F7D15D7E1386397400B342F8 /* Courier New.ttf in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -197,6 +200,7 @@
 		F7A3D357138646290059D237 /* MSAOpenCLTypes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSAOpenCLTypes.h; sourceTree = "<group>"; };
 		F7A3D369138646310059D237 /* MSAPingPong.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSAPingPong.h; sourceTree = "<group>"; };
 		F7A3D37213864B4E0059D237 /* OpenCL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenCL.framework; path = /System/Library/Frameworks/OpenCL.framework; sourceTree = "<absolute>"; };
+		F7A3D37413866AD30059D237 /* ImageOperations.cl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.opencl; path = ImageOperations.cl; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.c; };
 		F7D15D73138634AD00B342F8 /* README.rtf */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; path = README.rtf; sourceTree = "<group>"; };
 		F7D15D791386395200B342F8 /* Courier New.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Courier New.ttf"; path = "Assets/Courier New.ttf"; sourceTree = "<group>"; };
 		F7D4EBCF13599A850095562C /* cameras.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = cameras.c; sourceTree = "<group>"; };
@@ -560,6 +564,7 @@
 				F7A3D317138645BB0059D237 /* ImageOperations.h */,
 				F7D4ECE61359A73B0095562C /* KinectMouse.cpp */,
 				F7D4ECE71359A73B0095562C /* KinectMouse.h */,
+				F7A3D37413866AD30059D237 /* ImageOperations.cl */,
 			);
 			path = src;
 			sourceTree = SOURCE_ROOT;
@@ -1205,6 +1210,7 @@
 				F7A3D364138646290059D237 /* MSAOpenCLKernel.cpp in Sources */,
 				F7A3D365138646290059D237 /* MSAOpenCLMemoryObject.cpp in Sources */,
 				F7A3D366138646290059D237 /* MSAOpenCLProgram.cpp in Sources */,
+				F7A3D37513866AD30059D237 /* ImageOperations.cl in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

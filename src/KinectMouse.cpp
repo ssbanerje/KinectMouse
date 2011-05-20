@@ -3,7 +3,7 @@
 
 //--------------------------------------------------------------
 void KinectMouse::setup() {
-	ofSetLogLevel(0);
+	ofSetLogLevel(5);
     ofSetDataPathRoot("../Resources/");
     
     //Initialize Kinect
@@ -12,16 +12,19 @@ void KinectMouse::setup() {
     kinect.setVerbose(false);
     kinect.open();
     kinect.setCameraTiltAngle(kinectAngle);
-    nearThreshold = 5;
-    farThreshold = 30;
+    nearThreshold = 245;
+    farThreshold = 220;
     mirror = false;
     dispWidth = 1680;
     dispHeight = 1050;
     depthImage.allocate(kinect.width, kinect.height);
     colorImage.allocate(kinect.width, kinect.height);
+    thresholdImage.allocate(kinect.width, kinect.height);
+    distanceTransformImage.allocate(kinect.width, kinect.height);
     
     //Initialize ImageOperations
     opencl.setup(CL_DEVICE_TYPE_GPU, 2);
+    imgOps.setHeightWidth(kinect.width, kinect.height);
     imgOps.setOpenCLContextAndInitializeKernels(&opencl);
     imgOps.setOriginalImages(&colorImage, &depthImage);
     imgOps.setThresholdImage(&thresholdImage);
@@ -40,8 +43,8 @@ void KinectMouse::setup() {
     gui.addSlider("Tilt Angle", kinectAngle, -30, 30);
     gui.addToggle("Mirror", mirror);
     gui.addTitle("Depth Threshold");
-    gui.addSlider("Near Distance", nearThreshold, 5, 20);
-    gui.addSlider("Far Distance", farThreshold, 20, 60);
+    gui.addSlider("Near Distance", nearThreshold, 230, 255);
+    gui.addSlider("Far Distance", farThreshold, 0, 255);
     gui.setDefaultKeys(true);
     gui.loadFromXML();
     gui.show();
@@ -55,10 +58,16 @@ void KinectMouse::update() {
     if(kinect.isFrameNew()) {
         colorImage.setFromPixels(kinect.getPixels(), kinect.width, kinect.height);
         depthImage.setFromPixels(kinect.getDepthPixels(), kinect.width, kinect.height);
+        thresholdImage.setFromPixels(depthImage.getPixels(), kinect.width, kinect.height);
         imgOps.depthThreshold(nearThreshold, farThreshold);
         if(!showUI) {
+            distanceTransformImage.setFromPixels(depthImage.getPixels(), kinect.width, kinect.height);
             imgOps.distanceTransform();
+            distanceTransformImage.flagImageChanged();
         }
+        colorImage.flagImageChanged();
+        depthImage.flagImageChanged();
+        thresholdImage.flagImageChanged();
     }
 }
 
@@ -69,7 +78,8 @@ void KinectMouse::draw(){
         ofPushMatrix();
         ofTranslate(400, 100);
         colorImage.draw(0, 0, 400, 300);
-        depthImage.draw(0, 350, 400, 300);
+        depthImage.draw(-200, 350, 400, 300);
+        thresholdImage.draw(210, 350, 400, 300);
         ofPopMatrix();
 		gui.draw();
         dispFont.drawString("Press Space Key to start.", 20, ofGetHeight()-60);
