@@ -19,10 +19,6 @@ void KinectMouse::setup() {
     ofSetWindowTitle("Kinect Mouse");
     dispFont.loadFont("Courier New.ttf",14,true,true);
     dispFont.setLineHeight(20.0f);
-    soundDetect.loadSound("16582__tedthetrumpet__kettleswitch1.aif");
-	soundDetect.setVolume(100);
-	soundRelease.loadSound("2674__dmooney__TAPE32.wav");
-	soundRelease.setVolume(100);
     
     //Initialize Kinect
     kinectAngle = 0;
@@ -121,12 +117,10 @@ void KinectMouse::update() {
 			for (int j=0; j<hands.size(); j++){
 				hands[j]->unregister();
 			}
-			soundRelease.play();
 		}
 	} else {
 		if (detectCount > 30) {
 			detectingHands = true;
-			soundDetect.play();
 		}
 	}
     

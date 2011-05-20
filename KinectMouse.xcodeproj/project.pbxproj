@@ -40,9 +40,6 @@
 		F7702625135AC278005BD877 /* tinyxmlparser.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F770261F135AC278005BD877 /* tinyxmlparser.cpp */; };
 		F7702626135AC278005BD877 /* ofxXmlSettings.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F7702621135AC278005BD877 /* ofxXmlSettings.cpp */; };
 		F7D15D7E1386397400B342F8 /* Courier New.ttf in CopyFiles */ = {isa = PBXBuildFile; fileRef = F7D15D791386395200B342F8 /* Courier New.ttf */; };
-		F7D15D7F1386397400B342F8 /* OpenFrameworks.icns in CopyFiles */ = {isa = PBXBuildFile; fileRef = F7D15D7A1386395200B342F8 /* OpenFrameworks.icns */; };
-		F7D15D801386397400B342F8 /* 16582__tedthetrumpet__kettleswitch1.aif in CopyFiles */ = {isa = PBXBuildFile; fileRef = F7D15D7C1386395200B342F8 /* 16582__tedthetrumpet__kettleswitch1.aif */; };
-		F7D15D811386397400B342F8 /* 2674__dmooney__TAPE32.wav in CopyFiles */ = {isa = PBXBuildFile; fileRef = F7D15D7D1386395200B342F8 /* 2674__dmooney__TAPE32.wav */; };
 		F7D4EBF613599A850095562C /* cameras.c in Sources */ = {isa = PBXBuildFile; fileRef = F7D4EBCF13599A850095562C /* cameras.c */; };
 		F7D4EBF713599A850095562C /* core.c in Sources */ = {isa = PBXBuildFile; fileRef = F7D4EBD013599A850095562C /* core.c */; };
 		F7D4EBF813599A850095562C /* tilt.c in Sources */ = {isa = PBXBuildFile; fileRef = F7D4EBD513599A850095562C /* tilt.c */; };
@@ -109,9 +106,6 @@
 			dstSubfolderSpec = 7;
 			files = (
 				F7D15D7E1386397400B342F8 /* Courier New.ttf in CopyFiles */,
-				F7D15D7F1386397400B342F8 /* OpenFrameworks.icns in CopyFiles */,
-				F7D15D801386397400B342F8 /* 16582__tedthetrumpet__kettleswitch1.aif in CopyFiles */,
-				F7D15D811386397400B342F8 /* 2674__dmooney__TAPE32.wav in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -165,11 +159,9 @@
 		F770261F135AC278005BD877 /* tinyxmlparser.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = tinyxmlparser.cpp; sourceTree = "<group>"; };
 		F7702621135AC278005BD877 /* ofxXmlSettings.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxXmlSettings.cpp; sourceTree = "<group>"; };
 		F7702622135AC278005BD877 /* ofxXmlSettings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxXmlSettings.h; sourceTree = "<group>"; };
+		F77C724113863F2300D1BAF6 /* OpenFrameworks.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = OpenFrameworks.icns; sourceTree = "<group>"; };
 		F7D15D73138634AD00B342F8 /* README.rtf */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; path = README.rtf; sourceTree = "<group>"; };
 		F7D15D791386395200B342F8 /* Courier New.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Courier New.ttf"; path = "Assets/Courier New.ttf"; sourceTree = "<group>"; };
-		F7D15D7A1386395200B342F8 /* OpenFrameworks.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; name = OpenFrameworks.icns; path = Assets/OpenFrameworks.icns; sourceTree = "<group>"; };
-		F7D15D7C1386395200B342F8 /* 16582__tedthetrumpet__kettleswitch1.aif */ = {isa = PBXFileReference; lastKnownFileType = file; path = 16582__tedthetrumpet__kettleswitch1.aif; sourceTree = "<group>"; };
-		F7D15D7D1386395200B342F8 /* 2674__dmooney__TAPE32.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = 2674__dmooney__TAPE32.wav; sourceTree = "<group>"; };
 		F7D4EBCF13599A850095562C /* cameras.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = cameras.c; sourceTree = "<group>"; };
 		F7D4EBD013599A850095562C /* core.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = core.c; sourceTree = "<group>"; };
 		F7D4EBD113599A850095562C /* freenect_internal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = freenect_internal.h; sourceTree = "<group>"; };
@@ -508,6 +500,7 @@
 		E4B69B4A0A3A1720003C02F2 = {
 			isa = PBXGroup;
 			children = (
+				F77C724113863F2300D1BAF6 /* OpenFrameworks.icns */,
 				E4B69B5B0A3A1756003C02F2 /* KinectMouseDebug.app */,
 				E4B69E1C0A3A1BDC003C02F2 /* src */,
 				BB4B018C10F6955C006C3DED /* addons */,
@@ -658,21 +651,9 @@
 			isa = PBXGroup;
 			children = (
 				F7D15D791386395200B342F8 /* Courier New.ttf */,
-				F7D15D7A1386395200B342F8 /* OpenFrameworks.icns */,
-				F7D15D7B1386395200B342F8 /* sound */,
 				F7D15D73138634AD00B342F8 /* README.rtf */,
 			);
 			name = Resources;
-			sourceTree = "<group>";
-		};
-		F7D15D7B1386395200B342F8 /* sound */ = {
-			isa = PBXGroup;
-			children = (
-				F7D15D7C1386395200B342F8 /* 16582__tedthetrumpet__kettleswitch1.aif */,
-				F7D15D7D1386395200B342F8 /* 2674__dmooney__TAPE32.wav */,
-			);
-			name = sound;
-			path = Assets/sound;
 			sourceTree = "<group>";
 		};
 		F7D4EB7113599A850095562C /* ofxKinect */ = {
