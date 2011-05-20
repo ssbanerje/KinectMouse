@@ -41,15 +41,6 @@
 		F7A3D318138645BB0059D237 /* ImageOperations.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F7A3D316138645BB0059D237 /* ImageOperations.cpp */; };
 		F7A3D3291386461E0059D237 /* Color.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F7A3D31F1386461E0059D237 /* Color.cpp */; };
 		F7A3D32A1386461E0059D237 /* MSACoreGL.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F7A3D3261386461E0059D237 /* MSACoreGL.cpp */; };
-		F7A3D358138646290059D237 /* TestProgram.cl in Sources */ = {isa = PBXBuildFile; fileRef = F7A3D332138646290059D237 /* TestProgram.cl */; };
-		F7A3D359138646290059D237 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F7A3D334138646290059D237 /* main.cpp */; };
-		F7A3D35A138646290059D237 /* testApp.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F7A3D335138646290059D237 /* testApp.cpp */; };
-		F7A3D35B138646290059D237 /* ImageProcessing.cl in Sources */ = {isa = PBXBuildFile; fileRef = F7A3D33A138646290059D237 /* ImageProcessing.cl */; };
-		F7A3D35C138646290059D237 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F7A3D33C138646290059D237 /* main.cpp */; };
-		F7A3D35D138646290059D237 /* testApp.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F7A3D33D138646290059D237 /* testApp.cpp */; };
-		F7A3D35E138646290059D237 /* Particle.cl in Sources */ = {isa = PBXBuildFile; fileRef = F7A3D342138646290059D237 /* Particle.cl */; };
-		F7A3D35F138646290059D237 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F7A3D344138646290059D237 /* main.cpp */; };
-		F7A3D360138646290059D237 /* testApp.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F7A3D345138646290059D237 /* testApp.cpp */; };
 		F7A3D361138646290059D237 /* MSAOpenCL.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F7A3D34A138646290059D237 /* MSAOpenCL.cpp */; };
 		F7A3D362138646290059D237 /* MSAOpenCLBuffer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F7A3D34C138646290059D237 /* MSAOpenCLBuffer.cpp */; };
 		F7A3D363138646290059D237 /* MSAOpenCLImage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F7A3D34E138646290059D237 /* MSAOpenCLImage.cpp */; };
@@ -178,7 +169,6 @@
 		F77C724113863F2300D1BAF6 /* OpenFrameworks.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = OpenFrameworks.icns; sourceTree = "<group>"; };
 		F7A3D316138645BB0059D237 /* ImageOperations.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ImageOperations.cpp; sourceTree = "<group>"; };
 		F7A3D317138645BB0059D237 /* ImageOperations.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageOperations.h; sourceTree = "<group>"; };
-		F7A3D31A1386461E0059D237 /* install.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = install.xml; sourceTree = "<group>"; };
 		F7A3D31D1386461E0059D237 /* ChanTraits.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChanTraits.h; sourceTree = "<group>"; };
 		F7A3D31E1386461E0059D237 /* CinderMath.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CinderMath.h; sourceTree = "<group>"; };
 		F7A3D31F1386461E0059D237 /* Color.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Color.cpp; sourceTree = "<group>"; };
@@ -191,21 +181,6 @@
 		F7A3D3261386461E0059D237 /* MSACoreGL.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = MSACoreGL.cpp; sourceTree = "<group>"; };
 		F7A3D3271386461E0059D237 /* MSACoreGL.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSACoreGL.h; sourceTree = "<group>"; };
 		F7A3D3281386461E0059D237 /* MSACoreMath.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSACoreMath.h; sourceTree = "<group>"; };
-		F7A3D32C138646280059D237 /* changelog.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = changelog.txt; sourceTree = "<group>"; };
-		F7A3D332138646290059D237 /* TestProgram.cl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.opencl; path = TestProgram.cl; sourceTree = "<group>"; };
-		F7A3D334138646290059D237 /* main.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
-		F7A3D335138646290059D237 /* testApp.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = testApp.cpp; sourceTree = "<group>"; };
-		F7A3D336138646290059D237 /* testApp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = testApp.h; sourceTree = "<group>"; };
-		F7A3D33A138646290059D237 /* ImageProcessing.cl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.opencl; path = ImageProcessing.cl; sourceTree = "<group>"; };
-		F7A3D33C138646290059D237 /* main.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
-		F7A3D33D138646290059D237 /* testApp.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = testApp.cpp; sourceTree = "<group>"; };
-		F7A3D33E138646290059D237 /* testApp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = testApp.h; sourceTree = "<group>"; };
-		F7A3D342138646290059D237 /* Particle.cl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.opencl; path = Particle.cl; sourceTree = "<group>"; };
-		F7A3D344138646290059D237 /* main.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
-		F7A3D345138646290059D237 /* testApp.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = testApp.cpp; sourceTree = "<group>"; };
-		F7A3D346138646290059D237 /* testApp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = testApp.h; sourceTree = "<group>"; };
-		F7A3D347138646290059D237 /* install.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = install.xml; sourceTree = "<group>"; };
-		F7A3D348138646290059D237 /* LICENSE.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE.txt; sourceTree = "<group>"; };
 		F7A3D34A138646290059D237 /* MSAOpenCL.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = MSAOpenCL.cpp; sourceTree = "<group>"; };
 		F7A3D34B138646290059D237 /* MSAOpenCL.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSAOpenCL.h; sourceTree = "<group>"; };
 		F7A3D34C138646290059D237 /* MSAOpenCLBuffer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = MSAOpenCLBuffer.cpp; sourceTree = "<group>"; };
@@ -716,7 +691,6 @@
 		F7A3D3191386461E0059D237 /* MSACore */ = {
 			isa = PBXGroup;
 			children = (
-				F7A3D31A1386461E0059D237 /* install.xml */,
 				F7A3D31B1386461E0059D237 /* src */,
 			);
 			name = MSACore;
@@ -753,137 +727,10 @@
 		F7A3D32B138646280059D237 /* MSAOpenCL */ = {
 			isa = PBXGroup;
 			children = (
-				F7A3D32C138646280059D237 /* changelog.txt */,
-				F7A3D32D138646280059D237 /* examples */,
-				F7A3D347138646290059D237 /* install.xml */,
-				F7A3D348138646290059D237 /* LICENSE.txt */,
 				F7A3D349138646290059D237 /* src */,
 			);
 			name = MSAOpenCL;
 			path = ../../../addons/MSAOpenCL;
-			sourceTree = "<group>";
-		};
-		F7A3D32D138646280059D237 /* examples */ = {
-			isa = PBXGroup;
-			children = (
-				F7A3D32E138646280059D237 /* openFrameworks */,
-			);
-			path = examples;
-			sourceTree = "<group>";
-		};
-		F7A3D32E138646280059D237 /* openFrameworks */ = {
-			isa = PBXGroup;
-			children = (
-				F7A3D32F138646280059D237 /* MSAOpenCL example - hello world */,
-				F7A3D337138646290059D237 /* MSAOpenCL example - images */,
-				F7A3D33F138646290059D237 /* MSAOpenCL Example - particles */,
-			);
-			path = openFrameworks;
-			sourceTree = "<group>";
-		};
-		F7A3D32F138646280059D237 /* MSAOpenCL example - hello world */ = {
-			isa = PBXGroup;
-			children = (
-				F7A3D330138646290059D237 /* data */,
-				F7A3D333138646290059D237 /* src */,
-			);
-			path = "MSAOpenCL example - hello world";
-			sourceTree = "<group>";
-		};
-		F7A3D330138646290059D237 /* data */ = {
-			isa = PBXGroup;
-			children = (
-				F7A3D331138646290059D237 /* MSAOpenCL */,
-			);
-			path = data;
-			sourceTree = "<group>";
-		};
-		F7A3D331138646290059D237 /* MSAOpenCL */ = {
-			isa = PBXGroup;
-			children = (
-				F7A3D332138646290059D237 /* TestProgram.cl */,
-			);
-			path = MSAOpenCL;
-			sourceTree = "<group>";
-		};
-		F7A3D333138646290059D237 /* src */ = {
-			isa = PBXGroup;
-			children = (
-				F7A3D334138646290059D237 /* main.cpp */,
-				F7A3D335138646290059D237 /* testApp.cpp */,
-				F7A3D336138646290059D237 /* testApp.h */,
-			);
-			path = src;
-			sourceTree = "<group>";
-		};
-		F7A3D337138646290059D237 /* MSAOpenCL example - images */ = {
-			isa = PBXGroup;
-			children = (
-				F7A3D338138646290059D237 /* data */,
-				F7A3D33B138646290059D237 /* src */,
-			);
-			path = "MSAOpenCL example - images";
-			sourceTree = "<group>";
-		};
-		F7A3D338138646290059D237 /* data */ = {
-			isa = PBXGroup;
-			children = (
-				F7A3D339138646290059D237 /* MSAOpenCL */,
-			);
-			path = data;
-			sourceTree = "<group>";
-		};
-		F7A3D339138646290059D237 /* MSAOpenCL */ = {
-			isa = PBXGroup;
-			children = (
-				F7A3D33A138646290059D237 /* ImageProcessing.cl */,
-			);
-			path = MSAOpenCL;
-			sourceTree = "<group>";
-		};
-		F7A3D33B138646290059D237 /* src */ = {
-			isa = PBXGroup;
-			children = (
-				F7A3D33C138646290059D237 /* main.cpp */,
-				F7A3D33D138646290059D237 /* testApp.cpp */,
-				F7A3D33E138646290059D237 /* testApp.h */,
-			);
-			path = src;
-			sourceTree = "<group>";
-		};
-		F7A3D33F138646290059D237 /* MSAOpenCL Example - particles */ = {
-			isa = PBXGroup;
-			children = (
-				F7A3D340138646290059D237 /* data */,
-				F7A3D343138646290059D237 /* src */,
-			);
-			path = "MSAOpenCL Example - particles";
-			sourceTree = "<group>";
-		};
-		F7A3D340138646290059D237 /* data */ = {
-			isa = PBXGroup;
-			children = (
-				F7A3D341138646290059D237 /* MSAOpenCL */,
-			);
-			path = data;
-			sourceTree = "<group>";
-		};
-		F7A3D341138646290059D237 /* MSAOpenCL */ = {
-			isa = PBXGroup;
-			children = (
-				F7A3D342138646290059D237 /* Particle.cl */,
-			);
-			path = MSAOpenCL;
-			sourceTree = "<group>";
-		};
-		F7A3D343138646290059D237 /* src */ = {
-			isa = PBXGroup;
-			children = (
-				F7A3D344138646290059D237 /* main.cpp */,
-				F7A3D345138646290059D237 /* testApp.cpp */,
-				F7A3D346138646290059D237 /* testApp.h */,
-			);
-			path = src;
 			sourceTree = "<group>";
 		};
 		F7A3D349138646290059D237 /* src */ = {
@@ -1352,15 +1199,6 @@
 				F7A3D318138645BB0059D237 /* ImageOperations.cpp in Sources */,
 				F7A3D3291386461E0059D237 /* Color.cpp in Sources */,
 				F7A3D32A1386461E0059D237 /* MSACoreGL.cpp in Sources */,
-				F7A3D358138646290059D237 /* TestProgram.cl in Sources */,
-				F7A3D359138646290059D237 /* main.cpp in Sources */,
-				F7A3D35A138646290059D237 /* testApp.cpp in Sources */,
-				F7A3D35B138646290059D237 /* ImageProcessing.cl in Sources */,
-				F7A3D35C138646290059D237 /* main.cpp in Sources */,
-				F7A3D35D138646290059D237 /* testApp.cpp in Sources */,
-				F7A3D35E138646290059D237 /* Particle.cl in Sources */,
-				F7A3D35F138646290059D237 /* main.cpp in Sources */,
-				F7A3D360138646290059D237 /* testApp.cpp in Sources */,
 				F7A3D361138646290059D237 /* MSAOpenCL.cpp in Sources */,
 				F7A3D362138646290059D237 /* MSAOpenCLBuffer.cpp in Sources */,
 				F7A3D363138646290059D237 /* MSAOpenCLImage.cpp in Sources */,

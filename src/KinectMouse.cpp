@@ -9,6 +9,7 @@ void KinectMouse::setup() {
     //Initialize Kinect
     kinectAngle = 0;
     kinect.init();
+    kinect.setVerbose(false);
     kinect.open();
     kinect.setCameraTiltAngle(kinectAngle);
     nearThreshold = 5;
@@ -19,12 +20,17 @@ void KinectMouse::setup() {
     depthImage.allocate(kinect.width, kinect.height);
     colorImage.allocate(kinect.width, kinect.height);
     
-    //Initialize OpenCL
+    //Initialize ImageOperations
     opencl.setup(CL_DEVICE_TYPE_GPU, 2);
     imgOps.setOpenCLContextAndInitializeKernels(&opencl);
+    imgOps.setOriginalImages(&colorImage, &depthImage);
+    imgOps.setThresholdImage(&thresholdImage);
+    imgOps.setDistanceTImage(&distanceTransformImage);
     
     //Setup GUI
     showUI = true;
+    ofBackground(50, 50, 50);
+    ofSetColor(255, 255, 255);
     gui.setup();
     gui.config->gridSize.x = 200;
     gui.addTitle("Screen Dimensions");
@@ -39,20 +45,36 @@ void KinectMouse::setup() {
     gui.setDefaultKeys(true);
     gui.loadFromXML();
     gui.show();
+    dispFont.loadFont("Courier New.ttf",14,true,true);
 }
 
 //--------------------------------------------------------------
 void KinectMouse::update() {
+    kinect.setCameraTiltAngle(kinectAngle);
+    kinect.update();
+    if(kinect.isFrameNew()) {
+        colorImage.setFromPixels(kinect.getPixels(), kinect.width, kinect.height);
+        depthImage.setFromPixels(kinect.getDepthPixels(), kinect.width, kinect.height);
+        imgOps.depthThreshold(nearThreshold, farThreshold);
+        if(!showUI) {
+            imgOps.distanceTransform();
+        }
+    }
 }
 
 //--------------------------------------------------------------
 void KinectMouse::draw(){
-    //Draw initial menu with settings
+    //Mouse not in use
     if(showUI){
+        ofPushMatrix();
+        ofTranslate(400, 100);
+        colorImage.draw(0, 0, 400, 300);
+        depthImage.draw(0, 350, 400, 300);
+        ofPopMatrix();
 		gui.draw();
         dispFont.drawString("Press Space Key to start.", 20, ofGetHeight()-60);
 	}
-    //Draw grayImage when the KinectMouse is in use
+    //Mouse is in use
     else{
 	}
 }
@@ -96,9 +118,9 @@ void KinectMouse::keyPressed(int key){
 		case ' ':
 			showUI = !showUI;
 			if (showUI)
-				ofSetWindowShape(800, 600);
+				ofSetWindowShape(1024, 768);
 			else
-				ofSetWindowShape(400, 300);
+				ofSetWindowShape(800, 600);
 			break;			
 		case OF_KEY_UP:
 			kinectAngle++;

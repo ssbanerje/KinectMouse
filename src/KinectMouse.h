@@ -32,6 +32,8 @@ private:
     int                 farThreshold;
     ofxCvGrayscaleImage depthImage;
     ofxCvColorImage     colorImage;
+    ofxCvGrayscaleImage thresholdImage;
+    ofxCvGrayscaleImage distanceTransformImage;
     OpenCL              opencl;
     
     //Application
