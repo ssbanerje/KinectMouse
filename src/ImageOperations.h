@@ -12,6 +12,7 @@ private:
     OpenCLKernel        *distanceKernel;
     OpenCLBuffer        distanceBuffer[2];
     OpenCLBuffer        depthBuffer;
+    OpenCLBuffer        templates[4];
     
     ofxCvColorImage     *colorImage;
     ofxCvGrayscaleImage *depthImage;
