@@ -1,9 +1,0 @@
-This is a simple gestural mouse for the Mac OS X using a Xbox Kinect. It s based on the libfreenect and openFrameworks.
-
-The openFrameworks addons required are --
-ofxOpenCv, ofxThread, ofxVectorMath, ofxXmlSettings, ofxMSAInteractiveObject, ofxSimpleGuiToo, ofxKinect
-
-To run the application -- 
-Copy the files into the $ofx/apps/myApps/KinectMouse folder and compile and run the application using XCode
-
-This was built against openFrameworks v0.062
