@@ -5,6 +5,7 @@
 void KinectMouse::setup() {
 	ofSetLogLevel(0);
 	ofLog(OF_LOG_VERBOSE, "KinectMouse::setup()");
+    ofSetDataPathRoot("../Resources/");
     
     //Setup Application
     debug = true;
@@ -18,9 +19,9 @@ void KinectMouse::setup() {
     ofSetWindowTitle("Kinect Mouse");
     dispFont.loadFont("Courier New.ttf",14,true,true);
     dispFont.setLineHeight(20.0f);
-    soundDetect.loadSound("sound/16582__tedthetrumpet__kettleswitch1.aif");
+    soundDetect.loadSound("16582__tedthetrumpet__kettleswitch1.aif");
 	soundDetect.setVolume(100);
-	soundRelease.loadSound("sound/2674__dmooney__TAPE32.wav");
+	soundRelease.loadSound("2674__dmooney__TAPE32.wav");
 	soundRelease.setVolume(100);
     
     //Initialize Kinect
