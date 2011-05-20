@@ -4,42 +4,22 @@
 //--------------------------------------------------------------
 void KinectMouse::setup() {
 	ofSetLogLevel(0);
-	ofLog(OF_LOG_VERBOSE, "KinectMouse::setup()");
     ofSetDataPathRoot("../Resources/");
-    
-    //Setup Application
-    debug = true;
-    showUI = true;
-    mirror = false;
-    dispWidth = 1680;
-    dispHeight = 1050;
-    ofSetFrameRate(30);
-    ofBackground(50, 50, 50);
-    ofSetWindowShape(800, 600);
-    ofSetWindowTitle("Kinect Mouse");
-    dispFont.loadFont("Courier New.ttf",14,true,true);
-    dispFont.setLineHeight(20.0f);
     
     //Initialize Kinect
     kinectAngle = 0;
     kinect.init();
     kinect.open();
     kinect.setCameraTiltAngle(kinectAngle);
-    
-    //Setup images
-    colorImage.allocate(kinect.width, kinect.height);
-    checkGrayImage.allocate(kinect.width, kinect.height);
-    grayImage.allocate(kinect.width, kinect.height);
-    grayThreshImg.allocate(kinect.width, kinect.height);
-    grayThreshImgPrev.allocate(kinect.width, kinect.height);
-    
-    //Setup detection
     nearThreshold = 5;
     farThreshold = 30;
-    detectCount = 0;
-    twoHandsCount = 0;
+    mirror = false;
+    
+    dispWidth = 1680;
+    dispHeight = 1050;
     
     //Setup GUI
+    showUI = true;
     gui.setup();
     gui.config->gridSize.x = 200;
     gui.addTitle("Screen Dimensions");
@@ -58,189 +38,18 @@ void KinectMouse::setup() {
 
 //--------------------------------------------------------------
 void KinectMouse::update() {
-    kinect.update();
-    kinect.setCameraTiltAngle(kinectAngle);
-    checkDepthUpdate();
-    
-    //Update Images
-    grayImage.setFromPixels(kinect.getDepthPixels(), kinect.width, kinect.height);
-	grayThreshImg.setFromPixels(kinect.getDepthPixels(), kinect.width, kinect.height);
-   	grayThreshImg.setFromPixels(kinect.getPixels(), kinect.width, kinect.height);
-    colorImage.setFromPixels(kinect.getPixels(),kinect.width,kinect.height);
-    if(mirror) {
-        grayImage.mirror(false,true);
-    }
-    
-    //Do thresholding
-    unsigned char *pix = grayImage.getPixels();
-	unsigned char *grayThreshPix = grayThreshImg.getPixels();
-	int numPixels = grayImage.getWidth() * grayImage.getHeight();
-	int maxThreshold = 255 - nearThreshold;
-	int minThreshold = 255 - farThreshold;
-	int nearestDepth = 0;
-	for(int i=0; i<numPixels; i++) {
-		if (minThreshold < pix[i] && pix[i] < maxThreshold && pix[i] > nearestDepth) {
-			nearestDepth = pix[i];
-		}
-	}
-    for(int i=0; i<numPixels; i++) {
-		if(minThreshold<pix[i] && pix[i]<nearestDepth+2 && pix[i]>nearestDepth-10 )  {
-			pix[i] = 255;
-        } else {
-			pix[i] = 0;
-		}
-	}
-    grayImage.flagImageChanged();    
-    contourFinder.findContours(grayImage, 1500, (kinect.width*kinect.height)/4, 2, false);
-    
-    //Detect blobs
-    if(showUI) {
-        return;
-    }
-    int detectHands = contourFinder.blobs.size();
-    
-    if (detectHands == 2) {
-        twoHandsCount = min(60, ++twoHandsCount);
-    } else {
-        twoHandsCount = max(0, --twoHandsCount);
-    }
-    
-    if (detectHands > 0) {
-		detectCount = min(50, ++detectCount);
-    } else {
-		detectCount = max(0, --detectCount);
-	}
-    
-    if (detectingHands) {
-		if (detectCount < 10) {
-			detectingHands = false;
-			for (int j=0; j<hands.size(); j++){
-				hands[j]->unregister();
-			}
-		}
-	} else {
-		if (detectCount > 30) {
-			detectingHands = true;
-		}
-	}
-    
-    if (detectingTwoHands) {
-		if (twoHandsCount < 15) {
-			detectingTwoHands = false;
-		}
-	} else {
-		if (twoHandsCount > 30) {
-			detectingTwoHands = true;
-			CGEventRef keyEv = CGEventCreateKeyboardEvent(NULL, (CGKeyCode)101, true);
-			CGEventPost (kCGHIDEventTap, keyEv);
-			CGEventRef keyEv2 = CGEventCreateKeyboardEvent(NULL, (CGKeyCode)101, false);
-			CGEventPost (kCGHIDEventTap, keyEv2);
-		}
-	}
-    
-    if (detectingHands && detectHands==1) {
-		for (int i = 0; i < contourFinder.nBlobs; i++) {
-			float x = (float)contourFinder.blobs[i].centroid.x;
-			float y = (float)contourFinder.blobs[i].centroid.y;
-            
-			int cornerCount = contourFinder.blobs[i].nPts;
-			float centroidX = 0;
-			float centroidY = 0;
-			float addCount = 0;
-			for (int j=0; j<contourFinder.blobs[i].nPts; j+=5) {
-				addCount++;
-				centroidX += contourFinder.blobs[i].pts[j].x;
-				centroidY += contourFinder.blobs[i].pts[j].y;
-			}
-			centroidX = centroidX/addCount;
-			centroidY = centroidY/addCount;
-			if (hands.size() == 0) {
-				Hand *hand = new Hand(true, dispWidth, dispHeight);
-				hand->setIsActive(true);
-				hand->update(ofPoint(x, y), cornerCount, ofPoint(x, y));
-				hands.push_back(hand);
-			}
-            else{
-				for (int j = 0; j < hands.size(); j++) {
-					hands[j]->update(ofPoint(x, y), cornerCount, ofPoint(centroidX, centroidY));
-				}
-			}
-		}
-	}
 }
 
 //--------------------------------------------------------------
 void KinectMouse::draw(){
-    ofSetColor(255, 255, 255);
-    
     //Draw initial menu with settings
     if(showUI){
-        kinect.drawDepth(275, 100, 200, 150);
-        colorImage.draw(500, 100, 200, 150);
 		gui.draw();
         dispFont.drawString("Press Space Key to start.", 20, ofGetHeight()-60);
-		ofPushMatrix();
-		ofTranslate(400, 300, 0);
-		glScalef(0.6, 0.6, 1.0f); 
-        for (register int i = 0; i < contourFinder.nBlobs; i++){
-            ofPushMatrix();
-            contourFinder.blobs[i].draw(0,0);
-			ofSetColor(255, 0, 0);
-            ofFill();
-            ofEllipse(contourFinder.blobs[i].centroid.x, contourFinder.blobs[i].centroid.y, 4, 4);
-			float centroidX = 0;
-			float centroidY = 0;
-			float addCount = 0;
-			for (int j = 0; j < contourFinder.blobs[i].nPts; j+=5){
-				addCount++;
-				centroidX += contourFinder.blobs[i].pts[j].x;
-				centroidY += contourFinder.blobs[i].pts[j].y;
-			}
-			centroidX = centroidX/addCount;
-			centroidY = centroidY/addCount;
-            ofSetColor(0, 0, 255);
-            ofFill();
-			ofCircle(centroidX, centroidY, 10);
-		    ofPopMatrix();
-        }
-		ofPopMatrix();
 	}
     //Draw grayImage when the KinectMouse is in use
     else{
-        grayImage.draw(0, 0, 400, 300);
-		colorImage.draw(400, 0, 400, 300);
-        stringstream str;
-        str<<"Frame rate - "<<ofGetFrameRate()<<endl
-           <<"Press Space Key to end.";
-        dispFont.drawString(str.str(), 20, ofGetHeight()-60);
-        ofPushMatrix();
-		ofTranslate(200, 300, 0);
-		glScalef(0.5, 0.5, 1.0f); 
-        for (register int i = 0; i < contourFinder.nBlobs; i++){
-            ofPushMatrix();
-            contourFinder.blobs[i].draw(0,0);
-			ofSetColor(255, 0, 0);
-            ofFill();
-            ofEllipse(contourFinder.blobs[i].centroid.x, contourFinder.blobs[i].centroid.y, 4, 4);
-			float centroidX = 0;
-			float centroidY = 0;
-			float addCount = 0;
-			for (int j = 0; j < contourFinder.blobs[i].nPts; j+=5){
-				addCount++;
-				centroidX += contourFinder.blobs[i].pts[j].x;
-				centroidY += contourFinder.blobs[i].pts[j].y;
-			}
-			centroidX = centroidX/addCount;
-			centroidY = centroidY/addCount;
-            ofSetColor(0, 0, 255);
-            ofFill();
-			ofCircle(centroidX, centroidY, 10);
-		    ofPopMatrix();
-        }
-        ofPopMatrix();
 	}
-	ofSetColor(255, 255, 255);
-    ofNoFill();
 }
 
 //--------------------------------------------------------------
@@ -318,28 +127,3 @@ void KinectMouse::mouseReleased(int x, int y, int button){}
 
 //--------------------------------------------------------------
 void KinectMouse::windowResized(int w, int h){}
-
-//--------------------------------------------------------------
-void KinectMouse::checkDepthUpdate(){
-    if(ofGetFrameNum() % 150 == 0){
-        ofLog(OF_LOG_VERBOSE, "KinectMouse::checkDepthUpdate()");
-        unsigned char *nextDepth = kinect.getDepthPixels();
-        if (ofGetFrameNum() != 150){
-			unsigned char *currentDepthPixels = checkGrayImage.getPixels();
-			int pixNum = kinect.width * kinect.height;
-            for (int i=0; i<pixNum; i++) {
-                if (nextDepth[i] != currentDepthPixels[i]) {
-                    break;
-				}
-				if (i > pixNum/2) {
-					ofLog(OF_LOG_ERROR, "Reset Kinect");
-					kinect.close();
-					kinect.open();
-					kinect.setCameraTiltAngle(kinectAngle);
-					break;
-				}
-			}                  
-		}
-        checkGrayImage.setFromPixels(nextDepth, kinect.width, kinect.height);
-    }
-}

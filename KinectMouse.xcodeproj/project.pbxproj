@@ -33,7 +33,6 @@
 		E4C242CD10CC650E004149E2 /* libfmodex.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = E4C242CC10CC650E004149E2 /* libfmodex.dylib */; };
 		E4C246DA10CCAE22004149E2 /* freeimage.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E4C246D910CCAE22004149E2 /* freeimage.a */; };
 		F758BAF6135B366800B93D00 /* openFrameworksDebug.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F758BAF5135B366800B93D00 /* openFrameworksDebug.a */; };
-		F77025E21359BDD9005BD877 /* Hand.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F77025E01359BDD9005BD877 /* Hand.cpp */; };
 		F7702618135AC26C005BD877 /* ofxMSAInteractiveObject.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F7702614135AC26C005BD877 /* ofxMSAInteractiveObject.cpp */; };
 		F7702623135AC278005BD877 /* tinyxml.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F770261C135AC278005BD877 /* tinyxml.cpp */; };
 		F7702624135AC278005BD877 /* tinyxmlerror.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F770261E135AC278005BD877 /* tinyxmlerror.cpp */; };
@@ -149,8 +148,6 @@
 		E4C242CC10CC650E004149E2 /* libfmodex.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libfmodex.dylib; path = ../../../libs/fmodex/lib/osx/libfmodex.dylib; sourceTree = SOURCE_ROOT; };
 		E4C246D910CCAE22004149E2 /* freeimage.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = freeimage.a; path = ../../../libs/FreeImage/lib/osx/freeimage.a; sourceTree = SOURCE_ROOT; };
 		F758BAF5135B366800B93D00 /* openFrameworksDebug.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = openFrameworksDebug.a; path = ../../../libs/openFrameworksCompiled/lib/osx/openFrameworksDebug.a; sourceTree = "<group>"; };
-		F77025E01359BDD9005BD877 /* Hand.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Hand.cpp; sourceTree = "<group>"; };
-		F77025E11359BDD9005BD877 /* Hand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Hand.h; sourceTree = "<group>"; };
 		F7702614135AC26C005BD877 /* ofxMSAInteractiveObject.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxMSAInteractiveObject.cpp; sourceTree = "<group>"; };
 		F7702615135AC26C005BD877 /* ofxMSAInteractiveObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxMSAInteractiveObject.h; sourceTree = "<group>"; };
 		F770261C135AC278005BD877 /* tinyxml.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = tinyxml.cpp; sourceTree = "<group>"; };
@@ -517,8 +514,6 @@
 				E4B69E1D0A3A1BDC003C02F2 /* main.cpp */,
 				F7D4ECE61359A73B0095562C /* KinectMouse.cpp */,
 				F7D4ECE71359A73B0095562C /* KinectMouse.h */,
-				F77025E01359BDD9005BD877 /* Hand.cpp */,
-				F77025E11359BDD9005BD877 /* Hand.h */,
 			);
 			path = src;
 			sourceTree = SOURCE_ROOT;
@@ -1066,7 +1061,6 @@
 				F7D4ECAE13599B0E0095562C /* ofxCvImage.cpp in Sources */,
 				F7D4ECAF13599B0E0095562C /* ofxCvShortImage.cpp in Sources */,
 				F7D4ECE81359A73B0095562C /* KinectMouse.cpp in Sources */,
-				F77025E21359BDD9005BD877 /* Hand.cpp in Sources */,
 				F7702618135AC26C005BD877 /* ofxMSAInteractiveObject.cpp in Sources */,
 				F7702623135AC278005BD877 /* tinyxml.cpp in Sources */,
 				F7702624135AC278005BD877 /* tinyxmlerror.cpp in Sources */,

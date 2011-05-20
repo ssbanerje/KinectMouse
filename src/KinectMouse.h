@@ -1,19 +1,15 @@
-#ifndef _KINECT_MOUSE_APP_INC
-#define _KINECT_MOUSE_APP_INC
+#pragma once
 
 #include "ofMain.h"
 #include "ofxOpenCv.h"
 #include "ofxKinect.h"
 #include "ofxSimpleGuiToo.h"
-#include "Hand.h"
 
-#include <iostream>
-#include <string.h>
-#include <vector>
+using namespace std;
+//using namespace MSA;
 
 class KinectMouse : public ofBaseApp{    
 public:
-    //ofBaseApp
     void setup();
     void update();
     void draw();
@@ -30,34 +26,13 @@ private:
     //Kinect
     ofxKinect kinect;
     int kinectAngle;
-    void checkDepthUpdate();
-    
-    //Images
-    ofxCvColorImage colorImage;
-    ofxCvGrayscaleImage checkGrayImage;
-    ofxCvGrayscaleImage grayImage;
-    ofxCvGrayscaleImage grayThreshImg;
-    ofxCvGrayscaleImage grayThreshImgPrev;
     int nearThreshold;
     int farThreshold;
     
     //Application
-    bool debug;
-    bool showUI;
     bool mirror;
-    int dispHeight;
+    bool showUI;
     int dispWidth;
-    ofSoundPlayer soundDetect;
-    ofSoundPlayer soundRelease;
+    int dispHeight;
     ofTrueTypeFont dispFont;
-    
-    //Detection Algorithm
-    int detectCount;
-    int twoHandsCount;
-    bool detectingHands;
-    bool detectingTwoHands;
-    ofxCvContourFinder contourFinder;
-    vector<Hand *> hands;    
 };
-
-#endif
