@@ -7,6 +7,7 @@ void KinectMouse::setup() {
     ofSetDataPathRoot("../Resources/");
     ofSetWindowTitle("Kinect Mouse");
     ofSetFrameRate(50);
+    ofSetWindowPosition(300, 300);
     
     //Initialize Kinect
     kinectAngle = 0;
@@ -16,6 +17,7 @@ void KinectMouse::setup() {
     kinect.setCameraTiltAngle(kinectAngle);
     nearThreshold = 245;
     farThreshold = 220;
+    skeletonThreshold = 6;
     mirror = false;
     dispWidth = 1680;
     dispHeight = 1050;
@@ -25,7 +27,7 @@ void KinectMouse::setup() {
     distanceTransformImage.allocate(kinect.width, kinect.height);
     
     //Initialize ImageOperations
-    opencl.setupFromOpenGL();
+    opencl.setup(CL_DEVICE_TYPE_GPU, 2);
     imgOps.setHeightWidth(kinect.width, kinect.height);
     imgOps.setOpenCLContextAndInitializeKernels(&opencl);
     imgOps.setOriginalImages(&colorImage, &depthImage);
@@ -47,6 +49,7 @@ void KinectMouse::setup() {
     gui.addTitle("Depth Threshold");
     gui.addSlider("Near Distance", nearThreshold, 230, 255);
     gui.addSlider("Far Distance", farThreshold, 0, 255);
+    gui.addSlider("Skeleton Threshold", skeletonThreshold, 0, 15);
     gui.setDefaultKeys(true);
     gui.loadFromXML();
     gui.show();
@@ -64,7 +67,7 @@ void KinectMouse::update() {
         imgOps.depthThreshold(nearThreshold, farThreshold);
         if(!showUI) {
             distanceTransformImage.setFromPixels(depthImage.getPixels(), kinect.width, kinect.height);
-            imgOps.distanceTransform();
+            imgOps.distanceTransform(skeletonThreshold);
             distanceTransformImage.flagImageChanged();
         }
         colorImage.flagImageChanged();

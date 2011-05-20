@@ -30,6 +30,7 @@ private:
     int                 kinectAngle;
     int                 nearThreshold;
     int                 farThreshold;
+    int                 skeletonThreshold;
     ofxCvGrayscaleImage depthImage;
     ofxCvColorImage     colorImage;
     ofxCvGrayscaleImage thresholdImage;

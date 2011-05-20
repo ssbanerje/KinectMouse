@@ -27,5 +27,5 @@ public:
     void setThresholdImage(ofxCvGrayscaleImage *tI) {thresholdImage = tI;}
     void setDistanceTImage(ofxCvGrayscaleImage *dI) {distanceImage = dI;}
     void depthThreshold(int near, int far);
-    void distanceTransform();
+    void distanceTransform(int skTh);
 };

@@ -19,6 +19,7 @@ int getIndex(const int i, const int j) {
 __kernel void distanceTransform(__global unsigned char *src, __global unsigned char *dst) {
     int2 coord = (int2)(get_global_id(0), get_global_id(1));
     if(coord.x<=2 || coord.x>=WIDTH-2 || coord.y<=2 || coord.y>=HEIGHT-2) {
+        dst[getIndex(coord.x, coord.y)] = 100;
         return;
     }
     unsigned char matrix[25];

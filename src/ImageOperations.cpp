@@ -1,4 +1,5 @@
 #include "ImageOperations.h"
+#include "ofMain.h"
 
 //--------------------------------------------------------------
 void ImageOperations::setOpenCLContextAndInitializeKernels(OpenCL *cl) {
@@ -24,16 +25,19 @@ void ImageOperations::depthThreshold(int near, int far) {
 }
 
 //--------------------------------------------------------------
-void ImageOperations::distanceTransform() {
+void ImageOperations::distanceTransform(int skTh) {
     const unsigned int len = width*height;
-    distanceBuffer[0].initBuffer(len*sizeof(unsigned char), CL_MEM_READ_ONLY, thresholdImage->getPixels());
+    unsigned char *ori = thresholdImage->getPixels();
+    unsigned char *fin = distanceImage->getPixels();
+    distanceBuffer[0].initBuffer(len*sizeof(unsigned char), CL_MEM_READ_ONLY, ori);
     distanceBuffer[1].initBuffer(len*sizeof(unsigned char), CL_MEM_READ_WRITE);
+    opencl->finish();
     distanceKernel->setArg(0, distanceBuffer[0].getCLMem());
     distanceKernel->setArg(1, distanceBuffer[1].getCLMem());
     opencl->finish();
     distanceKernel->run2D(width, height);
     opencl->finish();
-    distanceBuffer[1].read(distanceImage->getPixels(), 0, len*sizeof(unsigned char));
+    distanceBuffer[1].read(fin, 0, len*sizeof(unsigned char));
     opencl->finish();
 }
 
