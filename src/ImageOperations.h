@@ -9,6 +9,8 @@ class ImageOperations {
 private:
     OpenCL              *opencl;
     OpenCLKernel        *depthKernel;
+    OpenCLKernel        *distanceKernel;
+    OpenCLBuffer        distanceBuffer[2];
     OpenCLBuffer        depthBuffer;
     
     ofxCvColorImage     *colorImage;
@@ -19,7 +21,7 @@ private:
     int                 height;
     
 public:
-    void setHeightWidth(int w, int h) {width = w;height = h;}
+    void setHeightWidth(int w, int h);
     void setOpenCLContextAndInitializeKernels(OpenCL *ocl);
     void setOriginalImages(ofxCvColorImage *cI, ofxCvGrayscaleImage *gI) {colorImage = cI; depthImage = gI;}
     void setThresholdImage(ofxCvGrayscaleImage *tI) {thresholdImage = tI;}

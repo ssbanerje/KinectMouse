@@ -3,8 +3,10 @@
 
 //--------------------------------------------------------------
 void KinectMouse::setup() {
-	ofSetLogLevel(5);
+	ofSetLogLevel(OF_LOG_ERROR);
     ofSetDataPathRoot("../Resources/");
+    ofSetWindowTitle("Kinect Mouse");
+    ofSetFrameRate(50);
     
     //Initialize Kinect
     kinectAngle = 0;
@@ -23,7 +25,7 @@ void KinectMouse::setup() {
     distanceTransformImage.allocate(kinect.width, kinect.height);
     
     //Initialize ImageOperations
-    opencl.setup(CL_DEVICE_TYPE_GPU, 2);
+    opencl.setupFromOpenGL();
     imgOps.setHeightWidth(kinect.width, kinect.height);
     imgOps.setOpenCLContextAndInitializeKernels(&opencl);
     imgOps.setOriginalImages(&colorImage, &depthImage);
@@ -86,6 +88,15 @@ void KinectMouse::draw(){
 	}
     //Mouse is in use
     else{
+        ofPushMatrix();
+        ofTranslate(115, 10);
+        colorImage.draw(0, 0, 200, 150);
+        depthImage.draw(210, 0, 200, 150);
+        thresholdImage.draw(420, 0, 200, 150);
+        ofPopMatrix();
+        distanceTransformImage.draw(250, 220, 400, 300);
+        dispFont.drawString("Press Space Key to stop.", 20, ofGetHeight()-60);
+        ofDrawBitmapString("Frame Rate : "+ofToString(ofGetFrameRate()), 20, ofGetHeight()-30);
 	}
 }
 
