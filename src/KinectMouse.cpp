@@ -67,7 +67,7 @@ void KinectMouse::update() {
         imgOps.depthThreshold(nearThreshold, farThreshold);
         if(!showUI) {
             distanceTransformImage.setFromPixels(depthImage.getPixels(), kinect.width, kinect.height);
-            imgOps.distanceTransform(skeletonThreshold);
+            //imgOps.distanceTransform(skeletonThreshold);
             distanceTransformImage.flagImageChanged();
         }
         colorImage.flagImageChanged();

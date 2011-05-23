@@ -1,5 +1,4 @@
 #include "ImageOperations.h"
-#include "ofMain.h"
 
 static int L0[25]={
     -1,-1,-1,-1,-1,
@@ -78,6 +77,11 @@ void ImageOperations::distanceTransform(int skTh) {
     distanceBuffer[1].read(fin, 0, len*sizeof(unsigned char));
     opencl->finish();
     ofSleepMillis(100);
+}
+
+//--------------------------------------------------------------
+void ImageOperations::detectBlobs() {
+    contours.findContours(*distanceImage, 1500, (width*height)/4, 2, false);
 }
 
 //--------------------------------------------------------------

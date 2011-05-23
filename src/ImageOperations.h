@@ -21,6 +21,8 @@ private:
     int                 width;
     int                 height;
     
+    ofxCvContourFinder  contours;
+    
 public:
     void setHeightWidth(int w, int h);
     void setOpenCLContextAndInitializeKernels(OpenCL *ocl);
@@ -29,4 +31,5 @@ public:
     void setDistanceTImage(ofxCvGrayscaleImage *dI) {distanceImage = dI;}
     void depthThreshold(int near, int far);
     void distanceTransform(int skTh);
+    void detectBlobs();
 };
