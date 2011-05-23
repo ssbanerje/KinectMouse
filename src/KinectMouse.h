@@ -6,6 +6,7 @@
 #include "ofxSimpleGuiToo.h"
 #include "MSAOpenCL.h"
 #include "ImageOperations.h"
+#include "Hand.h"
 
 using namespace std;
 using namespace MSA;
@@ -43,5 +44,6 @@ private:
     int                 dispWidth;
     int                 dispHeight;
     ImageOperations     imgOps;
+    Hand                hands[2];
     ofTrueTypeFont      dispFont;
 };

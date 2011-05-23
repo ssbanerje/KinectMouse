@@ -76,12 +76,24 @@ void ImageOperations::distanceTransform(int skTh) {
     opencl->finish();
     distanceBuffer[1].read(fin, 0, len*sizeof(unsigned char));
     opencl->finish();
-    ofSleepMillis(100);
 }
 
 //--------------------------------------------------------------
-void ImageOperations::detectBlobs() {
+void ImageOperations::detectHands(Hand *h) {
     contours.findContours(*distanceImage, 1500, (width*height)/4, 2, false);
+    for (int i=0; i<contours.blobs.size(); i++) {
+        if(Hand::isHand(&contours.blobs[i])) {
+            int *sgl = (int*)malloc(sizeof(int)*contours.blobs[i].nPts);
+            findDerivatives(contours.blobs[i].pts, sgl, contours.blobs[i].nPts);
+            sgl = NULL;
+            delete sgl;
+        }
+    }
+}
+
+//--------------------------------------------------------------
+void ImageOperations::findDerivatives(vector<ofPoint> pts, int *sgl, int len) {
+    
 }
 
 //--------------------------------------------------------------

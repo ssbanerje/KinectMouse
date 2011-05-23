@@ -1,6 +1,7 @@
 #pragma once
 
 #include "ofxVec3f.h"
+#include "ofxCvBlob.h"
 #include "Finger.h"
 
 typedef enum {LeftHand, RightHand} HandType;
@@ -13,4 +14,6 @@ public:
     void SetFinger(FingerType finger, int x, int y, int z);
     HandType getType() {return type;}
     void setType(HandType h) {type = h;}
+    
+    static bool isHand(ofxCvBlob *blob) {return true;}
 };

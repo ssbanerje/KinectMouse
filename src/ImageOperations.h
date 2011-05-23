@@ -2,6 +2,7 @@
 
 #include "ofxOpenCv.h"
 #include "MSAOpenCL.h"
+#include "Hand.h"
 
 using namespace MSA;
 
@@ -23,6 +24,8 @@ private:
     
     ofxCvContourFinder  contours;
     
+    void findDerivatives(vector<ofPoint> pts, int* sgl, int len);
+    
 public:
     void setHeightWidth(int w, int h);
     void setOpenCLContextAndInitializeKernels(OpenCL *ocl);
@@ -31,5 +34,5 @@ public:
     void setDistanceTImage(ofxCvGrayscaleImage *dI) {distanceImage = dI;}
     void depthThreshold(int near, int far);
     void distanceTransform(int skTh);
-    void detectBlobs();
+    void detectHands(Hand* h);
 };

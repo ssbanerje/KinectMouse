@@ -567,10 +567,10 @@
 			children = (
 				E4B69E1D0A3A1BDC003C02F2 /* main.cpp */,
 				F7A3D316138645BB0059D237 /* ImageOperations.cpp */,
+				F7A3D37413866AD30059D237 /* ImageOperations.cl */,
 				F7A3D317138645BB0059D237 /* ImageOperations.h */,
 				F7D4ECE61359A73B0095562C /* KinectMouse.cpp */,
 				F7D4ECE71359A73B0095562C /* KinectMouse.h */,
-				F7A3D37413866AD30059D237 /* ImageOperations.cl */,
 				F7510046138A62090044A164 /* Hand.cpp */,
 				F7510047138A62090044A164 /* Hand.h */,
 				F7510049138A62FF0044A164 /* Finger.cpp */,
